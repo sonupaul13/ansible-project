@@ -12,7 +12,7 @@ services = {
       #   machine_type = "e2-medium"
       #   image        = "debian-cloud/debian-11"
       #   zone         = "asia-southeast1-b"
-      #   username = "sandeeppaul"
+      #   username = "ansible-user"
       # },
       # {
       #   name         = "vm-sandeep-1"
