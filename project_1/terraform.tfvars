@@ -19,6 +19,7 @@ services = {
       #   machine_type = "e2-small"
       #   image        = "debian-cloud/debian-11"
       #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
       # }
     ]
   }
