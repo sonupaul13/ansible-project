@@ -7,25 +7,25 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      # {
-      #   name         = "vm-sandeep-2"
-      #   machine_type = "e2-medium"
-      #   image        = "debian-cloud/debian-11"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      # },
-      # {
-      #   name         = "vm-sandeep-1"
-      #   machine_type = "e2-small"
-      #   image        = "debian-cloud/debian-11"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # }
+      {
+        name         = "vm-1"
+        machine_type = "e2-medium"
+        image        = "debian-cloud/debian-11"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+      },
+      {
+        name         = "vm2"
+        machine_type = "e2-small"
+        image        = "debian-cloud/debian-11"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+      }
     ]
   }
 
   bucket = {
-    enabled = true
+    enabled = false
     buckets = [
       # {
       #   name          = "sandeep-bucket-1"
@@ -43,7 +43,7 @@ services = {
   }
 
   vpc_network = {
-    enabled = true
+    enabled = false
     networks = [
       # {
       #   name                    = "sandeep-vpc-1"
@@ -68,7 +68,7 @@ services = {
   }
 
   service_account = {
-    enabled = true
+    enabled = false
     service_accounts = [
       # {
       #   account_id        = "sandeep-service-account-1"
