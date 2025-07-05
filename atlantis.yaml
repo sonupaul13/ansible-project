@@ -1,0 +1,17 @@
+version: 3
+
+projects:
+  - dir: project_1
+    workflow: project_1_workflow
+
+workflows:
+  project_1_workflow:
+    plan:
+      steps:
+        - run: rm -rf .terraform .terraform.lock.hcl
+        - run: terraform init -input=false -upgrade
+        - run: terraform plan -var="GOOGLE_CREDENTIALS=$TF_VAR_GOOGLE_CREDENTIALS" -var-file="terraform.tfvars" -out=tfplan
+    apply:
+      steps:
+        - run: terraform apply tfplan
+        - run: ../scripts/post_apply.sh
