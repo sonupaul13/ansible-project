@@ -8,14 +8,14 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "geeta_1"
+        name         = "geeta-1"
         machine_type = "e2-medium"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
       },
       {
-        name         = "geeta_2"
+        name         = "geeta-2"
         machine_type = "e2-small"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-a"
