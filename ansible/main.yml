@@ -1,0 +1,54 @@
+---
+- name: Configure GCP VM
+  hosts: web
+  become: true
+  tasks:
+    - name: Create folder
+      file:
+        path: /home/ansible/first_file
+        state: directory
+        mode: '0755'
+    - name: create a user
+      user:
+        name: devuser
+        state: present
+        shell: /bin/bash
+        home: /home/devuser
+        append: yes
+      register: devuser_creation_result
+    # - name: Display devuser creation result 
+    #   debug:
+    #     var: devuser_creation_result
+    #     msg: "User devuser created successfully"
+    - name: Create a testuser
+      user:
+        name: testuser
+        state: present
+        shell: /bin/bash
+        home: /home/testuser
+        append: yes
+      register: testuser_creation_result
+    # - name: Display devuser creation result 
+    #   debug:
+    #     var: testuser_creation_result
+    #     msg: "User devuser created successfully"
+    - name: Create a password for devuser
+      user:
+        name: devuser
+        password: "devuser"
+    - name: Create a password for testuser
+      user:
+        name: testuser
+        password: "testuser"
+    - name: Create directory
+      file:
+        path: /shared
+        state: directory
+        mode: '0770'
+    - name: Change ownership of /shared
+      ansible.builtin.file:
+        path: /shared
+        owner: devuser
+        group: devuser
+        mode: '0770'
+        
