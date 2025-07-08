@@ -10,6 +10,10 @@
       label: gpt
       state: present 
 
+- name: Wipe existing signatures on /dev/sdb1
+  command: "wipefs -a /dev/sdb1"
+  become: true
+
 - name: Create a VG
   lvg:
     vg: myvg
