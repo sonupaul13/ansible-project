@@ -11,7 +11,7 @@ services = {
         name         = "yashwanth-vm1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-b"
+        zone         = "asia-southeast1-a"
         username = "ansible-user"
       },
       {
