@@ -7,7 +7,7 @@
 
 - name: Install Java package
   ansible.builtin.package:
-    name: java-1.8.0-openjdk
+    name: java-1.8.0-openjdk-devel
     state: present
   tags: install_solr
 
@@ -25,7 +25,7 @@
     url: https://archive.apache.org/dist/lucene/solr/8.11.2/solr-8.11.2.tgz
     dest: /tmp/solr-8.11.2.tgz
     mode: '0644'
-    timeout: 30
+    timeout: 300
   tags: install_solr
 
 - name: Create Solr directory
