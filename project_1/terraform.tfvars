@@ -8,16 +8,16 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vm-1"
-        machine_type = "e2-medium"
-        image        = "debian-cloud/debian-11"
+        name         = "yashwanth-vm1"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
       },
       {
-        name         = "vm2"
-        machine_type = "e2-small"
-        image        = "debian-cloud/debian-11"
+        name         = "yashwanth-vm2"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
       }

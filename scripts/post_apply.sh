@@ -73,9 +73,13 @@ jq -c '.[]' ../vm_ips.json | while read -r vm; do
     fi
   done
 
+
+
   ssh-keygen -R "$ip" || true
   echo "$ip ansible_user=$username ansible_ssh_private_key_file=\"$SSH_KEY_PATH\" ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
 done
+
+
 
 echo "[Atlantis] Generated inventory:"
 cat inventory.txt

@@ -1,0 +1,86 @@
+---
+- name: Install LVM2 package
+  ansible.builtin.yum:
+    name: lvm2
+    state: present
+
+- name: Check if /dev/sdb1 exists
+  stat:
+    path: /dev/sdb1
+  register: sdb1_stat
+
+- name: Create single partition on the disk
+  when: not sdb1_stat.stat.exists
+  parted:
+    device: /dev/sdb
+    number: 1
+    state: present
+    part_type: primary
+    fs_type: ext4
+    resize: yes
+
+- name: Unmount and wipe /dev/sdb1 if mounted
+  shell: |
+    umount /dev/sdb1 || true
+    wipefs -a /dev/sdb1
+  become: true
+  ignore_errors: true
+
+
+- name: Create a physical volume
+  ansible.builtin.command:
+    cmd: "pvcreate /dev/sdb1"
+
+- name: Create a volume group
+  ansible.builtin.lvg:
+    vg: "vg1"
+    pvs: "/dev/sdb1"
+
+- name: Create logical volume /data
+  ansible.builtin.lvol:
+    vg : "vg1"
+    lv: "lv_data"
+    size: 30G
+  
+- name: Create logical volume /logs
+  ansible.builtin.lvol:
+    vg: "vg1"
+    lv: "lv_logs"
+    size: 100%FREE
+  
+
+- name: Create filesystem on /data
+  ansible.builtin.filesystem:
+    fstype: ext4
+    dev: "/dev/vg1/lv_data"
+
+- name: Create filesystem on /logs
+  ansible.builtin.filesystem:
+    fstype: ext4
+    dev: "/dev/vg1/lv_logs"
+
+- name: Ensure /data mount exists
+  ansible.builtin.file:
+    path: "/data"
+    state: directory
+  
+- name: Ensure /logs mount exists
+  ansible.builtin.file:
+    path: "/logs"
+    state: directory
+
+- name: Mount /data 
+  ansible.builtin.mount:
+    path: "/data"
+    src: "/dev/vg1/lv_data"
+    fstype: ext4
+    state: mounted
+    
+
+- name: Mount /logs
+  ansible.builtin.mount:
+    path: "/logs"
+    src: "/dev/vg1/lv_logs"
+    fstype: ext4
+    state: mounted
+    
