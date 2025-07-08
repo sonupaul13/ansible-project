@@ -12,7 +12,7 @@ terraform output -json vm_public_ips > ../vm_ips.json
 cd ../ansible
 
 rm -f inventory.txt
-echo "[install_solr]" > inventory.txt
+echo "[mount_disk]" > inventory.txt
 
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
