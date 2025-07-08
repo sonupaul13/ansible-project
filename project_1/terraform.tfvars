@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsandeep1"
+        name         = "vmsandeep11"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
