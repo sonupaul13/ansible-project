@@ -1,13 +1,16 @@
 ---
+
 - name: Install LVM2 package
   ansible.builtin.yum:
     name: lvm2
     state: present
+  tags: lvm_setup
 
 - name: Check if /dev/sdb1 exists
   stat:
     path: /dev/sdb1
   register: sdb1_stat
+  tags: lvm_setup
 
 - name: Create single partition on the disk
   when: not sdb1_stat.stat.exists
@@ -18,6 +21,7 @@
     part_type: primary
     fs_type: ext4
     resize: yes
+  tags: lvm_setup
 
 - name: Unmount and wipe /dev/sdb1 if mounted
   shell: |
@@ -25,49 +29,57 @@
     wipefs -a /dev/sdb1
   become: true
   ignore_errors: true
+  tags: lvm_setup
 
 
 - name: Create a physical volume
   ansible.builtin.command:
     cmd: "pvcreate /dev/sdb1"
+  tags: lvm_setup
 
 - name: Create a volume group
   ansible.builtin.lvg:
     vg: "vg1"
     pvs: "/dev/sdb1"
+  tags: lvm_setup
 
 - name: Create logical volume /data
   ansible.builtin.lvol:
     vg : "vg1"
     lv: "lv_data"
     size: 30G
-  
+  tags: lvm_setup
+
 - name: Create logical volume /logs
   ansible.builtin.lvol:
     vg: "vg1"
     lv: "lv_logs"
     size: 100%FREE
-  
+  tags: lvm_setup
 
 - name: Create filesystem on /data
   ansible.builtin.filesystem:
     fstype: ext4
     dev: "/dev/vg1/lv_data"
+  tags: lvm_setup
 
 - name: Create filesystem on /logs
   ansible.builtin.filesystem:
     fstype: ext4
     dev: "/dev/vg1/lv_logs"
+  tags: lvm_setup
 
 - name: Ensure /data mount exists
   ansible.builtin.file:
     path: "/data"
     state: directory
-  
+  tags: lvm_setup
+
 - name: Ensure /logs mount exists
   ansible.builtin.file:
     path: "/logs"
     state: directory
+  tags: lvm_setup
 
 - name: Mount /data 
   ansible.builtin.mount:
@@ -75,7 +87,7 @@
     src: "/dev/vg1/lv_data"
     fstype: ext4
     state: mounted
-    
+  tags: lvm_setup
 
 - name: Mount /logs
   ansible.builtin.mount:
@@ -83,4 +95,4 @@
     src: "/dev/vg1/lv_logs"
     fstype: ext4
     state: mounted
-    
+  tags: lvm_setup

@@ -4,6 +4,7 @@
     path: /etc/yum.repos.d
     state: directory
     mode: '0755'
+  tags: mongo_setup
 
 - name: Add MongoDB repo file
   copy:
@@ -15,14 +16,17 @@
       gpgcheck=1
       enabled=1
       gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+  tags: mongo_setup
 
 - name: Install MongoDB packages
   ansible.builtin.package:
     name: mongodb-org
     state: present
+  tags: mongo_setup
 
 - name: Start and enable MongoDB service
   systemd:
     name: mongod
     enabled: true
     state: started
+  tags: mongo_setup
