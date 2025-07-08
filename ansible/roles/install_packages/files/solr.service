@@ -1,0 +1,13 @@
+[Unit]
+Description=Apache Solr
+After=network.target
+
+[Service]
+Type=simple
+User=solr
+Group=solr
+ExecStart=/usr/bin/java -jar /opt/solr/start.jar
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

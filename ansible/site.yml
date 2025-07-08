@@ -1,0 +1,15 @@
+---
+- name: Configure web server
+  hosts: web
+  become: true
+  vars:
+    disk_device: /dev/sdb
+    partition_device: /dev/sdb1
+    mount_point: /mnt/data
+
+  roles:
+    # - firewall
+    # - create_generic
+    - user_setup
+    - install_packages
+    - add_generic_partition

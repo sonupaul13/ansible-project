@@ -1,0 +1,8 @@
+---
+- name: Create Solr user
+  user:
+    name: solr
+    shell: /bin/bash
+    home: /opt/solr
+    createhome: yes
+    state: present
