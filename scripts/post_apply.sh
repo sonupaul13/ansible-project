@@ -40,4 +40,4 @@ echo "[Atlantis] Generated inventory:"
 cat inventory.txt
 
 echo "[Atlantis] Running Ansible playbook..."
-ansible-playbook -i inventory.txt site.yml
+ansible-playbook -i inventory.txt site.yml --tags install_solr

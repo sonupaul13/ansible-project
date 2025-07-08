@@ -7,8 +7,14 @@
     partition_device: /dev/sdb1
     mount_point: /mnt/data
   roles:
-    - install_packages
-    - add_generic_partition
-  tags:
-    - install_solr
-    - mount_disk
+    - { role: install_packages, tags: install_solr }
+
+- name: Install Solr and Mount Disks
+  hosts: web
+  become: true
+  vars:
+    disk_device: /dev/sdb
+    partition_device: /dev/sdb1
+    mount_point: /mnt/data
+  roles:
+    - { role: add_generic_partition, tags: mount_disk }
