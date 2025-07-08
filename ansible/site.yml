@@ -5,6 +5,5 @@
   roles:
     - setup_mongo
     - setup_lvm
-  
   tags:
     - mongo_setup
