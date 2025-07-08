@@ -1,6 +1,6 @@
 ---
 - name: Install Solr and Mount Disks
-  hosts: solr
+  hosts: web
   become: true
   vars:
     disk_device: /dev/sdb
