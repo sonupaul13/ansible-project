@@ -7,13 +7,13 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      {
-        name         = "vm-sandeep-1"
-        machine_type = "e2-medium"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-b"
-        username = "ansible-user"
-      },
+      # {
+      #   name         = "vm-sandeep-1"
+      #   machine_type = "e2-medium"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-b"
+      #   username = "ansible-user"
+      # },
       # {
       #   name         = "vm"
       #   machine_type = "e2-small"

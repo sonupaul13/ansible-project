@@ -1,6 +1,6 @@
 ---
 - name: Install Solr and Mount Disks
-  hosts: all
+  hosts: web
   become: true
   vars:
     disk_device: /dev/sdb
@@ -10,7 +10,7 @@
     - { role: install_packages, tags: install_solr }
 
 - name: Install Solr and Mount Disks
-  hosts: all
+  hosts: web
   become: true
   vars:
     disk_device: /dev/sdb
