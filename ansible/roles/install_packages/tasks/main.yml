@@ -1,11 +1,11 @@
 ---
 - name: Update dnf cache
-  ansible.builtin.dnf:
+  ansible.builtin.package:
     update_cache: yes
   become: true
 
 - name: Install Java package
-  ansible.builtin.dnf:
+  ansible.builtin.package:
     name: java-1.8.0-openjdk-devel
     state: present
   
