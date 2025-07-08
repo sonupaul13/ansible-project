@@ -5,6 +5,9 @@
 
   roles:
     - install_packages
+    
+  tags:
+    - install_solr
 
 - name: Mount disk
   hosts: mount_disk
@@ -16,6 +19,9 @@
 
   roles:
     - add_generic_partition
+  
+  tags:
+    - mount_disk
 
 - name: Install Solr and Mount Disks
   hosts: solr
@@ -27,3 +33,5 @@
   roles:
     - install_packages
     - add_generic_partition
+  tags:
+    - solr

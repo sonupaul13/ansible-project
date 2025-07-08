@@ -3,11 +3,17 @@
   ansible.builtin.package:
     update_cache: yes
   become: true
+  tags:
+    - install_solr
+    - solr
 
 - name: Install Java package
   ansible.builtin.package:
     name: java-1.8.0-openjdk
     state: present
+  tags:
+    - install_solr
+    - solr
 
 - name: Create Solr user
   user:
@@ -16,12 +22,18 @@
     home: /opt/solr
     createhome: yes
     state: present
+  tags:
+    - install_solr
+    - solr
   
 - name: Download Solr
   ansible.builtin.get_url:
     url: https://archive.apache.org/dist/lucene/solr/8.11.2/solr-8.11.2.tgz
     dest: /tmp/solr-8.11.2.tgz
     mode: '0644'
+  tags:
+    - install_solr
+    - solr
 
 - name: Create Solr directory
   ansible.builtin.file:
@@ -30,6 +42,9 @@
     owner: solr
     group: solr
     mode: '0755'
+  tags:
+    - install_solr
+    - solr
 
 - name: Extract Solr archive
   ansible.builtin.unarchive:
@@ -39,6 +54,9 @@
     owner: solr
     group: solr
     creates: /opt/solr/bin/solr
+  tags:
+    - install_solr
+    - solr
 
 # - name: Symlink /opt/solr to extracted dir
 #   ansible.builtin.file:
@@ -53,6 +71,9 @@
     owner: solr
     group: solr
     mode: '0644'
+  tags:
+    - install_solr
+    - solr
 
 - name: Create Solr data directory
   ansible.builtin.file:
@@ -61,6 +82,9 @@
     owner: solr
     group: solr
     mode: '0755'
+  tags:
+    - install_solr
+    - solr
 
 - name: Start and enable Solr service
   ansible.builtin.systemd:
@@ -68,6 +92,9 @@
     state: started
     enabled: true
     daemon_reload: yes
+  tags:
+    - install_solr
+    - solr
 
 - name: Open firewall port for Solr
   ansible.builtin.firewalld:
@@ -75,3 +102,6 @@
     permanent: true
     state: enabled
     immediate: yes
+  tags:
+    - install_solr
+    - solr
