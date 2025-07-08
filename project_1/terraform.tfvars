@@ -7,20 +7,20 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      # {
-      #   name         = "vm-1"
-      #   machine_type = "e2-medium"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      # },
       {
-        name         = "vm"
-        machine_type = "e2-small"
-        image        = "debian-cloud/debian-11"
-        zone         = "asia-southeast1-a"
+        name         = "vm-1"
+        machine_type = "e2-medium"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
         username = "ansible-user"
-      }
+      },
+      # {
+      #   name         = "vm"
+      #   machine_type = "e2-small"
+      #   image        = "debian-cloud/debian-11"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # }
     ]
   }
 
