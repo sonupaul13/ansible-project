@@ -1,28 +1,4 @@
 ---
-- name: Configure and install Solr
-  hosts: install_solr
-  become: true
-
-  roles:
-    - install_packages
-    
-  tags:
-    - install_solr
-
-- name: Mount disk
-  hosts: mount_disk
-  become: true
-  vars:
-    disk_device: /dev/sdb
-    partition_device: /dev/sdb1
-    mount_point: /mnt/data
-
-  roles:
-    - add_generic_partition
-  
-  tags:
-    - mount_disk
-
 - name: Install Solr and Mount Disks
   hosts: solr
   become: true
@@ -34,4 +10,5 @@
     - install_packages
     - add_generic_partition
   tags:
-    - solr
+    - install_solr
+    # - mount_disk
