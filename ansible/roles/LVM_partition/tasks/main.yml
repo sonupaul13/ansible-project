@@ -1,4 +1,3 @@
-
 - name: Install LVM2 package using shell
   shell: "dnf install -y lvm2"
 

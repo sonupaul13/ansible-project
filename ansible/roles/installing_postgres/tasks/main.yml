@@ -1,5 +1,5 @@
  - name: installing postgresql using shell
-    shell: "dnf install -y postgresql-server postgresql-contrib python3-psycopg2"
+   shell: "dnf install -y postgresql-server postgresql-contrib python3-psycopg2"
 
     # - name: Create Cluster
     #   ansible.builtin.command:
