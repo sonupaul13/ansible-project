@@ -14,13 +14,13 @@ services = {
       #   zone         = "asia-southeast1-b"
       #   username = "ansible-user"
       # },
-      # {
-      #   name         = "vm2"
-      #   machine_type = "e2-small"
-      #   image        = "debian-cloud/debian-11"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # }
+      {
+        name         = "vm2"
+        machine_type = "e2-small"
+        image        = "debian-cloud/debian-11"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+      }
     ]
   }
 
