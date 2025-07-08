@@ -3,6 +3,6 @@
   become: yes
   roles:
     - installing_postgres
-    - LVM_partition
+    - LVM_partition_postgres
   tags:
     - install 
