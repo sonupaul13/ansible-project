@@ -8,6 +8,14 @@
   ansible.builtin.package:
     name: java-1.8.0-openjdk
     state: present
+
+- name: Create Solr user
+  user:
+    name: solr
+    shell: /bin/bash
+    home: /opt/solr
+    createhome: yes
+    state: present
   
 - name: Download Solr
   ansible.builtin.get_url:

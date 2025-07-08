@@ -1,6 +1,13 @@
 ---
-- name: Configure web server
-  hosts: web
+- name: Configure and install Solr
+  hosts: install_solr
+  become: true
+
+  roles:
+    - install_packages
+
+- name: Mount disk
+  hosts: mount_disk
   become: true
   vars:
     disk_device: /dev/sdb
@@ -8,8 +15,15 @@
     mount_point: /mnt/data
 
   roles:
-    # - firewall
-    # - create_generic
-    - user_setup
+    - add_generic_partition
+
+- name: Install Solr and Mount Disks
+  hosts: solr
+  become: true
+  vars:
+    disk_device: /dev/sdb
+    partition_device: /dev/sdb1
+    mount_point: /mnt/data
+  roles:
     - install_packages
     - add_generic_partition

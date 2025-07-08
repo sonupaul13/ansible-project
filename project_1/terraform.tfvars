@@ -17,7 +17,7 @@ services = {
       {
         name         = "vm"
         machine_type = "e2-small"
-        image        = "debian-cloud/debian-11"
+        image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
       }
