@@ -45,6 +45,10 @@ set -x
 
 SSH_KEY_PATH="/home/atlantis/.atlantis/ssh_key"
 
+sudo dnf install -y openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
 echo "[Atlantis] Running post-apply script..."
 
 echo "[Atlantis] Fetching VM IPs from Terraform output..."
