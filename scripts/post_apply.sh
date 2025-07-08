@@ -45,9 +45,9 @@ set -x
 
 SSH_KEY_PATH="/home/atlantis/.atlantis/ssh_key"
 
-sudo dnf install -y openssh-server
-sudo systemctl enable sshd
-sudo systemctl start sshd
+# dnf install -y openssh-server
+# systemctl enable sshd
+# systemctl start sshd
 
 echo "[Atlantis] Running post-apply script..."
 
