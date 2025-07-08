@@ -4,3 +4,5 @@
   roles:
     - installing_postgres
     - LVM_partition
+  tags:
+    - install 
