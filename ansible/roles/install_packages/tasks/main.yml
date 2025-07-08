@@ -6,7 +6,7 @@
 
 - name: Install Java package
   ansible.builtin.package:
-    name: java-1.8.0-openjdk-devel
+    name: java-1.8.0-openjdk
     state: present
   
 - name: Download Solr
