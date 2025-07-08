@@ -53,7 +53,7 @@ terraform output -json vm_public_ips > ../vm_ips.json
 cd ../ansible
 
 rm -f inventory.txt
-echo "[web]" > inventory.txt
+echo "" > inventory.txt
 
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
