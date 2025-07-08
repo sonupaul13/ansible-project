@@ -11,4 +11,4 @@
     - add_generic_partition
   tags:
     - install_solr
-    # - mount_disk
+    - mount_disk

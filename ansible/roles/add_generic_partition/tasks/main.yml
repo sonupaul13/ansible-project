@@ -7,25 +7,19 @@
     part_start: 1MiB
     part_end: 100%
     fs_type: ext4
-  tags:
-    - mount_disk
-    - solr
+  tags: mount_disk
 
 - name: Create ext4 filesystem on the partition
   ansible.builtin.filesystem:
     fstype: ext4
     dev: "{{ partition_device }}"
-  tags:
-    - mount_disk
-    - solr
+  tags: mount_disk
 
 - name: Create mount directory
   ansible.builtin.file:
     path: "{{ mount_point }}"
     state: directory
-  tags:
-    - mount_disk
-    - solr
+  tags: mount_disk
 
 - name: Mount the new partition
   ansible.builtin.mount:
@@ -33,6 +27,4 @@
     src: "{{ partition_device }}"
     fstype: ext4
     state: mounted
-  tags:
-   - mount_disk
-   - solr
+  tags: mount_disk
