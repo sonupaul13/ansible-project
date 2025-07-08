@@ -1,29 +1,4 @@
----
-- name: Configure Rocky VM
-  hosts: all
-  become: yes
-  handlers:
-    - name: Restart postgresql
-      ansible.builtin.systemd:
-        name: postgresql
-        state: restarted
-
-  tasks:
-    - name: installing postgresql using shell
-      shell: "dnf install -y postgresql-server postgresql-contrib python3-psycopg2"
-
-    # - name: Create Cluster
-    #   ansible.builtin.command:
-    #     cmd: postgresql-setup --initdb
-    #   args:  
-    #     creates: /var/lib/pgsql/data/PG_version
-
-    # - name: start and enable postgresql
-    #   ansible.builtin.systemd:
-    #     name: postgresql
-    #     state: started
-    #     enabled: true  
-
+tasks:
     - name: Install LVM2 package using shell
       shell: "dnf install -y lvm2"
 
@@ -102,10 +77,3 @@
         src: /dev/myvg/archive
         fstype: ext4
         state: mounted
-
-              
-
-
-                              
-
-   ##
