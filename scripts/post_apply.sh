@@ -47,7 +47,6 @@
 # ansible-playbook -i inventory.txt site.yml --tags install_solr
 
 #!/bin/bash
-#!/bin/bash
 set -e
 
 SSH_KEY="/home/atlantis/.atlantis/ssh_key"
