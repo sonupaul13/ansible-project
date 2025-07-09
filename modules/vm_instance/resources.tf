@@ -6,8 +6,6 @@ resource "google_compute_disk" "extra_disk" {
   size = 50
 }
 
-
-
 resource "google_compute_instance" "vm_sandeep_tf" {
   for_each     = { for vm in var.instances : vm.name => vm }
 
