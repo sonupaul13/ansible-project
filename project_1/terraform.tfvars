@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsandeep-4"
+        name         = "vmsandeep-7"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -16,7 +16,7 @@ services = {
         role = "solr"
       },
       {
-        name         = "vmsandeep-2"
+        name         = "vmsandeep-8"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -24,7 +24,7 @@ services = {
         role = "postgres"
       },
       {
-        name         = "vmsandeep-3"
+        name         = "vmsandeep-9"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
