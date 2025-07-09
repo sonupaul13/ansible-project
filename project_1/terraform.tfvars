@@ -56,7 +56,7 @@ services = {
         }
       },
       {
-        name         = "geeta-vms-1"
+        name         = "geeta-vmss-1"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -68,7 +68,7 @@ services = {
         }
       },
       {
-        name         = "geeta-vms-2"
+        name         = "geeta-vmss-2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
