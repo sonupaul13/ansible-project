@@ -1,12 +1,12 @@
 ---
 - name: Install MongoDB
-  hosts: all
+  hosts: mongo
   become: true
   roles:
     - { role: setup_mongo, tags: ["mongo_setup"] }
 
 - name: Setup LVM
-  hosts: all
+  hosts: mongo
   become: true
   roles:
     - { role: setup_lvm, tags: ["lvm_setup"] }
@@ -28,7 +28,7 @@
     - { role: add_generic_partition, tags: mount_disk }
 
 - name: Install postgres
-  hosts: all
+  hosts: postgres
   become: yes
   roles:
     - installing_postgres
@@ -36,7 +36,7 @@
     - install 
 
 - name: Create LVM partitions for postgres
-  hosts: all
+  hosts: postgres
   become: yes
   roles:
     - LVM_partition_postgres
