@@ -27,8 +27,10 @@ module "buckets" {
 
 module "vm_instance" {
   source   = "../modules/vm_instance"
-  instances = var.services["vm_instance"].enabled ? var.services["vm_instance"].instances : []
-
+  instances = var.services["vm_instance"].enabled ? [
+  for vm in var.services["vm_instance"].instances :
+  vm if try(vm.tags["postgres"], false) == "true"
+] : []
   project_id         = var.project_id
   region             = var.region
   zone = var.zone
