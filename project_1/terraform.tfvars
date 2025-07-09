@@ -14,41 +14,41 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
       },
-      {
-        name         = "yashwanth-atlantis-vm2"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-      },
-      {
-        name         = "sandeep-atlantis-vm1"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-      },
-      {
-        name         = "sandeep-atlantis-vm2"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-      },
-      {
-        name         = "geeta-atlantis-vm1"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-      },
-      {
-        name         = "geeta-atlantis-vm2"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-      }
+      # {
+      #   name         = "yashwanth-atlantis-vm2"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "sandeep-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "sandeep-atlantis-vm2"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "geeta-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "geeta-atlantis-vm2"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # }
     ]
   }
 
