@@ -44,6 +44,9 @@ done
 
 echo "[Atlantis] Generated inventory:"
 cat inventory.txt
+LOG_DIR="../ansible_logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S).log"
 
 echo "[Atlantis] Running Ansible playbook..."
-ansible-playbook -i inventory.txt site.yml --tags mongo,postgres,solr,os_update
+ansible-playbook -i inventory.txt site.yml --tags mongo,postgres| tee "$LOG_FILE"
