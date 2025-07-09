@@ -1,0 +1,105 @@
+- name: Install LVM2 package using shell
+  shell: "dnf install -y lvm2"
+  tags:
+    - install
+
+
+- name: Create a partition on /dev/sdb
+  parted:
+      device: /dev/sdb
+      number: 1
+      part_type: primary
+      label: gpt
+      state: present 
+  tags:
+    - partition    
+
+- name: Create a VG
+  lvg:
+    vg: myvg
+    pvs: /dev/sdb1
+    state: present
+  tags:
+    - partition  
+
+- name: Create a LV for data
+  lvol:
+    vg: myvg
+    lv: data
+    size: 30g
+    state: present
+  tags:
+    - partition  
+
+- name: Create a LV for logs
+  lvol:
+    vg: myvg
+    lv: logs
+    size: 10g
+    state: present
+  tags:
+    - partition  
+
+- name: Create a LV for archive
+  lvol:
+    vg: myvg
+    lv: archive
+    size: 9g
+    state: present
+  tags:
+    - partition  
+
+- name: Create a filesystem on the data LV
+  filesystem:
+    fstype: ext4
+    dev: /dev/myvg/data
+  tags:
+    - partition 
+    
+
+- name: Create a filesystem on the logs LV
+  filesystem:
+    fstype: ext4
+    dev: /dev/myvg/logs
+  tags:
+    - partition  
+
+- name: Create a filesystem on the archive LV
+  filesystem:
+    fstype: ext4
+    dev: /dev/myvg/archive
+  tags:
+    - partition
+
+- name: Making directories for data, logs, and archive
+  command:
+    cmd: mkdir -p /data /logs /archive
+  tags:
+    - partition  
+
+- name: Mounting the data and persisting it
+  mount:
+    path: /data
+    src: /dev/myvg/data
+    fstype: ext4
+    state: mounted
+  tags:
+    - partition  
+
+- name: Mounting the logs and persisting it
+  mount:  
+    path: /logs
+    src: /dev/myvg/logs
+    fstype: ext4
+    state: mounted
+  tags:
+    - partition  
+
+- name: Mounting the archive and persisting it
+  mount:
+    path: /archive
+    src: /dev/myvg/archive
+    fstype: ext4
+    state: mounted 
+  tags:
+    - partition     
