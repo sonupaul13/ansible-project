@@ -13,18 +13,18 @@ rm -f inventory.txt
 # Create role-based temp files
 touch mongo.txt solr.txt postgres.txt
 
+echo "[Atlantis] Waiting for SSH to come up..."
+for ip in $(jq -r '.[].ip' $TF_OUTPUT_FILE); do
+  echo "Waiting for SSH on $ip..."
+  until ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no -o ConnectTimeout=3 ansible-user@$ip 'echo SSH ready' 2>/dev/null; do
+    sleep 5
+  done
+done
+
 jq -c '.[]' "$TF_OUTPUT_FILE" | while read -r vm; do
   ip=$(echo "$vm" | jq -r '.ip')
   username=$(echo "$vm" | jq -r '.username')
   role=$(echo "$vm" | jq -r '.role')
-
-  echo "[Atlantis] Waiting for SSH to come up..."
-  for ip in $(jq -r '.[].ip' $TF_OUTPUT_FILE); do
-    echo "Waiting for SSH on $ip..."
-    until ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no -o ConnectTimeout=3 ansible-user@$ip 'echo SSH ready' 2>/dev/null; do
-      sleep 5
-    done
-  done
 
   ssh-keygen -R "$ip" || true
 
