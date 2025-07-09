@@ -13,7 +13,7 @@ services = {
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
-        role = "solr"
+        role = "mongo"
       },
       {
         name         = "vmsandeep-8"
@@ -21,16 +21,45 @@ services = {
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
-        role = "postgres"
+        role = "mongo"
       },
       {
         name         = "vmsandeep-9"
-        machine_type = "e2-small"
+        machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "mongo"
-      }
+      },
+      # {
+      #   name         = "sandeep-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "sandeep-atlantis-vm2"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "geeta-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "geeta-atlantis-vm2"
+      #   machine_type = "e2-small"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "mongo"
+      # }
     ]
   }
 
