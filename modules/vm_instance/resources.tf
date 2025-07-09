@@ -13,7 +13,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["http-server", "https-server", "allow-ssh", "ssh"]
+  tags = concat(["http-server", "https-server", "allow-ssh", "ssh"], keys(each.value.tags))
 
   boot_disk {
     initialize_params {

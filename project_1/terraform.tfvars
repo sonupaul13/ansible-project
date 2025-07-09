@@ -8,18 +8,76 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vms-1"
+        name         = "yashwant-vm-1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "mongo" = "true"
+        }
       },
       {
-        name         = "vms-2"
+        name         = "yahswant-vm-2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "mongo" = "true"
+        }
+      },
+      {
+        name         = "sandeep-vm-1"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "solr" = "true"
+        }
+      },
+      {
+        name         = "sandeep-vm-2"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "solr" = "true"
+        }
+      },
+      {
+        name         = "geeta-vm-1"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "postgres" = "true"
+        }
+      },
+      {
+        name         = "geeta-vm-2"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        tags = {
+          "ansible" = "true"
+          "env"     = "dev"
+          "postgres" = "true"
+        }
       }
     ]
   }
