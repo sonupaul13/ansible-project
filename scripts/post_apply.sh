@@ -17,8 +17,9 @@ echo "[web]" > inventory.txt
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
 
+JQ_VMS=$(jq -c '.[]' ../vm_ips.json)
 #jq -c '.[]' ../vm_ips.json | while read -r vm; do
-while read -r vm; do
+for vm in $JQ_VMS; do
   ip=$(echo "$vm" | jq -r '.ip')
   username=$(echo "$vm" | jq -r '.username')
 
