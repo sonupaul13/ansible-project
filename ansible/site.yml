@@ -1,4 +1,22 @@
 ---
+- name : Base OS
+  hosts: all
+  become: true
+  roles:
+    - { role: update_os, tags: ["os_update"]}
+    
+- name: Install MongoDB
+  hosts: all
+  become: true
+  roles:
+    - { role: setup_mongo, tags: ["mongo_setup"] }
+
+- name: Setup LVM
+  hosts: all
+  become: true
+  roles:
+    - { role: setup_lvm, tags: ["lvm_setup"] }
+
 - name: Install Solr
   hosts: web
   become: true
