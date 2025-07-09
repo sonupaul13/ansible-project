@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "yashwant-vms-1"
+        name         = "yashwants-vm-1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -20,7 +20,7 @@ services = {
         }
       },
       {
-        name         = "yahswant-vms-2"
+        name         = "yahswants-vm-2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -32,7 +32,7 @@ services = {
         }
       },
       {
-        name         = "sandeep-vms-1"
+        name         = "sandeeps-vm-1"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -44,7 +44,7 @@ services = {
         }
       },
       {
-        name         = "geeta-vms-1"
+        name         = "geetas-vm-1"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -56,7 +56,7 @@ services = {
         }
       },
       {
-        name         = "geeta-vms-2"
+        name         = "geetas-vm-2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
