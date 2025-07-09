@@ -30,5 +30,6 @@ variable "instances" {
     image        = string
     zone         = string
     username = string
+    role = string
   }))
 }
