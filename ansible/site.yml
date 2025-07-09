@@ -9,13 +9,13 @@
   hosts: all
   become: true
   roles:
-    - { role: setup_mongo, tags: ["mongo_setup"] }
+    - { role: setup_mongo, tags: ["mongo"] }
 
 - name: Setup LVM
   hosts: all
   become: true
   roles:
-    - { role: setup_lvm, tags: ["lvm_setup"] }
+    - { role: setup_lvm, tags: ["mongo"] }
 
 - name: Install Solr
   hosts: web

@@ -46,4 +46,4 @@ echo "[Atlantis] Generated inventory:"
 cat inventory.txt
 
 echo "[Atlantis] Running Ansible playbook..."
-ansible-playbook -i inventory.txt site.yml --tags postgres
+ansible-playbook -i inventory.txt site.yml --tags mongo,postgres,solr,os_update
