@@ -45,4 +45,4 @@ rm -f mongo.txt solr.txt postgres.txt
 echo "[Atlantis] Inventory generated:"
 cat inventory.txt
 
-ansible-playbook -i inventory.txt site.yml --tags os_update
+ansible-playbook -i inventory.txt site.yml

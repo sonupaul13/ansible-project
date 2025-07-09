@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsandeep-11"
+        name         = "vmsandeep-111"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -16,7 +16,7 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsandeep-12"
+        name         = "vmsandeep-121"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -24,27 +24,29 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsandeep-13"
+        name         = "vmsandeep-131"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
-        role = "mongo"
+        role = "solr"
       },
-      # {
-      #   name         = "sandeep-atlantis-vm1"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # },
-      # {
-      #   name         = "sandeep-atlantis-vm2"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # },
+      {
+        name         = "vmsandeep-141"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+      },
+      {
+        name         = "vmsandeep-151"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+      },
       # {
       #   name         = "geeta-atlantis-vm1"
       #   machine_type = "e2-standard-4"
