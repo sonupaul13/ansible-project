@@ -17,7 +17,6 @@ services = {
           "ansible" = "true"
           "env"     = "dev"
           "mongo" = "true"
-          "os_update" = "true"
         }
       },
       {
@@ -42,7 +41,6 @@ services = {
           "ansible" = "true"
           "env"     = "dev"
           "solr" = "true"
-          "os_update" = "true"
         }
       },
       {
@@ -55,7 +53,6 @@ services = {
           "ansible" = "true"
           "env"     = "dev"
           "postgres" = "true"
-          "os_update" = "true"
         }
       },
       {
