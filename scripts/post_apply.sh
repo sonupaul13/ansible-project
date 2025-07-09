@@ -66,6 +66,8 @@ jq -c '.[]' "$TF_OUTPUT_FILE" | while read -r vm; do
   username=$(echo "$vm" | jq -r '.username')
   role=$(echo "$vm" | jq -r '.role')
 
+  ssh-keygen -R "$ip" || true
+
   echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> "$role.txt"
 done
 
