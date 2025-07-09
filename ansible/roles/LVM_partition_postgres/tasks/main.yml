@@ -12,7 +12,15 @@
       label: gpt
       state: present 
   tags:
-    - postgres    
+    - postgres   
+
+- name: Unmount and wipe /dev/sdb1 if mounted
+  shell: |
+    umount /dev/sdb1 || true
+    wipefs -a /dev/sdb1
+  become: true
+  ignore_errors: true
+  tags: lvm_setup     
 
 - name: Create a VG
   lvg:
