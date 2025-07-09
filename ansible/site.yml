@@ -23,14 +23,11 @@
   hosts: all
   become: yes
   roles:
-    - installing_postgres
-  tags:
-    - postgres 
+    - {role: installing_postgres, tags: postgres}
 
 - name: Create LVM partitions for postgres
   hosts: all
   become: yes
   roles:
-    - LVM_partition_postgres
-  tags:
-    - postgres
+    - {role: LVM_partition_postgres, tags: postgres}
+  
