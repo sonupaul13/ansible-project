@@ -7,46 +7,46 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      {
-        name         = "vmsandeep-11111"
-        machine_type = "e2-medium"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-b"
-        username = "ansible-user"
-        role = "mongo"
-      },
-      {
-        name         = "vmsandeep-22222"
-        machine_type = "e2-small"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-        role = "mongo"
-      },
-      {
-        name         = "vmsandeep-33333"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-        role = "solr"
-      },
-      {
-        name         = "vmsandeep-44444"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-        role = "postgres"
-      },
-      {
-        name         = "vmsandeep-55555"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-b"
-        username = "ansible-user"
-        role = "postgres"
-      },
+      # {
+      #   name         = "vmsandeep-11111"
+      #   machine_type = "e2-medium"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-b"
+      #   username = "ansible-user"
+      #   role = "mongo"
+      # },
+      # {
+      #   name         = "vmsandeep-22222"
+      #   machine_type = "e2-small"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "mongo"
+      # },
+      # {
+      #   name         = "vmsandeep-33333"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "solr"
+      # },
+      # {
+      #   name         = "vmsandeep-44444"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "postgres"
+      # },
+      # {
+      #   name         = "vmsandeep-55555"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-b"
+      #   username = "ansible-user"
+      #   role = "postgres"
+      # },
       # {
       #   name         = "geeta-atlantis-vm1"
       #   machine_type = "e2-standard-4"
