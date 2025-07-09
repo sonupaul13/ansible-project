@@ -24,7 +24,7 @@ services = {
       #   role = "mongo"
       # },
       {
-        name         = "vmsandeep-131"
+        name         = "vmsandeep-1111"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
