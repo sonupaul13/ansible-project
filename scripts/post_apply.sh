@@ -12,7 +12,7 @@ terraform output -json vm_public_ips > ../vm_ips.json
 cd ../ansible
 
 rm -f inventory.txt
-echo "[web]" > inventory.txt
+echo "" > inventory.txt
 
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
@@ -32,12 +32,16 @@ jq -c '.[]' ../vm_ips.json | while read -r vm; do
     fi
   done
 
+
+
   ssh-keygen -R "$ip" || true
   echo "$ip ansible_user=$username ansible_ssh_private_key_file=\"$SSH_KEY_PATH\" ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
 done
+
+
 
 echo "[Atlantis] Generated inventory:"
 cat inventory.txt
 
 echo "[Atlantis] Running Ansible playbook..."
-ansible-playbook -i inventory.txt site.yml --tags install
+ansible-playbook -i inventory.txt site.yml --tags mongo_setup
