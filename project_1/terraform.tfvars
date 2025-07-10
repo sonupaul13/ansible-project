@@ -15,44 +15,49 @@ services = {
       #   username = "ansible-user"
       # },
       {
-        name         = "mongo-vm1"
+        name         = "vm-mongo1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = true
       },
       {
-        name         = "mongo-vm2"
+        name         = "vm-mongo2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = false
       },
       {
-        name         = "solar-vm"
+        name         = "vm-solr1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
+        run_os_upgrade = false
       },
       {
-        name         = "postgres-vm1"
+        name         = "vm-postgres1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       {
-        name         = "postgres-vm2"
+        name         = "vm-postgres2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       # {
       #   name         = "geeta-atlantis-vm1"

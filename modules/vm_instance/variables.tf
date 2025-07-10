@@ -31,5 +31,6 @@ variable "instances" {
     zone         = string
     username = string
     role = string
+    run_os_upgrade = bool
   }))
 }

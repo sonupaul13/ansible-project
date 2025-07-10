@@ -1,10 +1,10 @@
 ---
 - name : Base OS
-  hosts: all
+  hosts: os_upgrade
   become: true
   roles:
     - { role: update_os, tags: ["os_update"]}
-    
+
 - name: Install MongoDB
   hosts: mongo
   become: true
