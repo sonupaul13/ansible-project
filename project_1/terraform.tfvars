@@ -15,7 +15,7 @@ services = {
       #   username = "ansible-user"
       # },
       {
-        name         = "vmsa-11"
+        name         = "mongo-vm1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -23,7 +23,7 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsa-22"
+        name         = "mongo-vm2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -31,7 +31,7 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsa-33"
+        name         = "solar-vm"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -39,7 +39,7 @@ services = {
         role = "solr"
       },
       {
-        name         = "vmsa-44"
+        name         = "postgres-vm1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -47,7 +47,7 @@ services = {
         role = "postgres"
       },
       {
-        name         = "vmsa-55"
+        name         = "postgres-vm2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"

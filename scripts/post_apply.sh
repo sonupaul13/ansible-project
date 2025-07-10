@@ -48,11 +48,6 @@ cat inventory.txt
 LOG_DIR="../ansible_logs"
 mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S).log"
-
-
-LOG_DIR="../ansible_logs"
-mkdir -p "$LOG_DIR"
-LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S).log"
  
 
 ansible-playbook -i inventory.txt site.yml | tee "$LOG_FILE"
