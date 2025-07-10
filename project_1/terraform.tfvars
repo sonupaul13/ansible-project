@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsa-1"
+        name         = "vmsa-11"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -16,7 +16,7 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsa-2"
+        name         = "vmsa-22"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -24,7 +24,7 @@ services = {
         role = "mongo"
       },
       {
-        name         = "vmsa-3"
+        name         = "vmsa-33"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -32,7 +32,7 @@ services = {
         role = "solr"
       },
       {
-        name         = "vmsa-4"
+        name         = "vmsa-44"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -40,7 +40,7 @@ services = {
         role = "postgres"
       },
       {
-        name         = "vmsa-5"
+        name         = "vmsa-55"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
