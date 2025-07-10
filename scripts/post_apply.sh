@@ -23,11 +23,11 @@ for TAG in "${TAGS_TO_RUN[@]}"; do
   jq -c '.[]' ../vm_ips.json | while read -r vm; do
     ip=$(echo "$vm" | jq -r '.ip')
     username=$(echo "$vm" | jq -r '.username')
-    tag_value=$(echo "$vm" | jq -r ".tags[\"$TAG\"]")
+    tags=$(echo "$vm" | jq -r '.tags | join(",")')
 
-    echo "[Atlantis][DEBUG] VM: $ip | Tag '$TAG' = $tag_value"
+    echo "[Atlantis][DEBUG] VM: $ip | Tags: $tags"
 
-    if [[ "$tag_value" == "true" ]]; then
+    if echo "$tags" | grep -q "$TAG"; then
       echo "[Atlantis][$TAG] Waiting for SSH to become available on $ip..."
       for i in {1..12}; do
         if ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=5 "$username@$ip" "echo SSH ready" >/dev/null 2>&1; then
