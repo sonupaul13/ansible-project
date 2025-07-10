@@ -7,45 +7,57 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
+      # {
+      #   name         = "yashwanth-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
       {
-        name         = "vmsa-11"
+        name         = "vm-mongo1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = true
       },
       {
-        name         = "vmsa-22"
+        name         = "vm-mongo2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = false
       },
       {
-        name         = "vmsa-33"
+        name         = "vm-solr1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
+        run_os_upgrade = false
       },
       {
-        name         = "vmsa-44"
+        name         = "vm-postgres1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       {
-        name         = "vmsa-55"
+        name         = "vm-postgres2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       # {
       #   name         = "geeta-atlantis-vm1"
