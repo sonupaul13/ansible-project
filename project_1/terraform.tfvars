@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsa-11"
+        name         = "vmsa-111"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -17,7 +17,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "vmsa-22"
+        name         = "vmsa-222"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -26,7 +26,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "vmsa-33"
+        name         = "vmsa-333"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -35,7 +35,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "vmsa-44"
+        name         = "vmsa-444"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -44,7 +44,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "vmsa-55"
+        name         = "vmsa-555"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
