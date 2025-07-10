@@ -15,26 +15,45 @@ services = {
       #   username = "ansible-user"
       # },
       {
-        name         = "yashwanth-atlantis-vm2"
+        name         = "vmsa-11"
+        machine_type = "e2-medium"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "mongo"
+      },
+      {
+        name         = "vmsa-22"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "mongo"
+      },
+      {
+        name         = "vmsa-33"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
+        role = "solr"
       },
-      # {
-      #   name         = "sandeep-atlantis-vm1"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # },
-      # {
-      #   name         = "sandeep-atlantis-vm2"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      # },
+      {
+        name         = "vmsa-44"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+      },
+      {
+        name         = "vmsa-55"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "postgres"
+      },
       # {
       #   name         = "geeta-atlantis-vm1"
       #   machine_type = "e2-standard-4"
@@ -44,10 +63,11 @@ services = {
       # },
       # {
       #   name         = "geeta-atlantis-vm2"
-      #   machine_type = "e2-standard-4"
+      #   machine_type = "e2-small"
       #   image        = "rocky-linux-9-v20250611"
       #   zone         = "asia-southeast1-a"
       #   username = "ansible-user"
+      #   role = "mongo"
       # }
     ]
   }
