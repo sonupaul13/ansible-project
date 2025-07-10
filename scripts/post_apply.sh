@@ -14,7 +14,7 @@ cd ../ansible
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
 
-TAGS_TO_RUN=("mongo" "postgres" "solr")
+TAGS_TO_RUN=("mongo" "postgres" "solr" "os_upgrade")
 
 for TAG in "${TAGS_TO_RUN[@]}"; do
   INVENTORY_FILE="inventory_${TAG}.txt"
