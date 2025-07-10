@@ -3,6 +3,7 @@ output "vm_public_ips" {
     for vm in values(module.vm_instance.vm_public_ips) : {
       ip       = vm.ip
       username = vm.username
+      tags     = vm.tags
     }
   ]
 }

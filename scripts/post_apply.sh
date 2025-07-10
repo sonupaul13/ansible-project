@@ -17,29 +17,30 @@ echo "" > inventory.txt
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
 
-JQ_VMS=$(jq -c '.[]' ../vm_ips.json)
-#jq -c '.[]' ../vm_ips.json | while read -r vm; do
 for vm in $JQ_VMS; do
   ip=$(echo "$vm" | jq -r '.ip')
   username=$(echo "$vm" | jq -r '.username')
+  tags=$(echo "$vm" | jq -r '.tags | to_entries | map("\(.key)=\(.value)") | join(",")')
 
-  echo "[Atlantis] Waiting for SSH to become available on $ip..."
-  for i in {1..12}; do
-    if ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=5 "$username@$ip" "echo SSH ready" >/dev/null 2>&1; then
-      echo "[Atlantis] SSH is ready on $ip"
-      break
-    else
-      echo "[Atlantis] SSH not ready on $ip, retrying in 5 seconds..."
-      sleep 5
-    fi
-  done
+  # Filter only VMs with the required tags
+  if echo "$tags" | grep -q -E "mongo=true|postgres=true|solr=true"; then
+    echo "[Atlantis] Waiting for SSH to become available on $ip..."
+    for i in {1..12}; do
+      if ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=5 "$username@$ip" "echo SSH ready" >/dev/null 2>&1; then
+        echo "[Atlantis] SSH is ready on $ip"
+        break
+      else
+        echo "[Atlantis] SSH not ready on $ip, retrying in 5 seconds..."
+        sleep 5
+      fi
+    done
 
-
-
-  ssh-keygen -R "$ip" || true
-  echo "$ip ansible_user=$username ansible_ssh_private_key_file=\"$SSH_KEY_PATH\" ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
+    ssh-keygen -R "$ip" || true
+    echo "$ip ansible_user=$username ansible_ssh_private_key_file=\"$SSH_KEY_PATH\" ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
+  else
+    echo "[Atlantis] Skipping $ip — no required tags found"
+  fi
 done
-
 
 
 echo "[Atlantis] Generated inventory:"
