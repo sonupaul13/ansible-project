@@ -7,8 +7,15 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
+      # {
+      #   name         = "yashwanth-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
       {
-        name         = "sandeep-mongo-vm1"
+        name         = "vm-mongo1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -17,7 +24,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "sandeep-mongo-vm2"
+        name         = "vm-mongo2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -26,25 +33,25 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "sandeep-solr-vm1"
+        name         = "vm-solr1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
-        run_os_upgrade = true
+        run_os_upgrade = false
       },
       {
-        name         = "sandeep-postgres-vm1"
+        name         = "vm-postgres1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
-        run_os_upgrade = true
+        run_os_upgrade = false
       },
       {
-        name         = "sandeep-postgres-vm2"
+        name         = "vm-postgres2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
