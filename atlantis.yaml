@@ -14,4 +14,4 @@ workflows:
     apply:
       steps:
         - run: terraform apply tfplan
-        # - run: ../scripts/post_apply.sh
+        - run: bash ../scripts/post_apply.sh

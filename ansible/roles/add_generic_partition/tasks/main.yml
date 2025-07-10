@@ -1,0 +1,37 @@
+---
+- name: Unmount all partitions on /dev/sdb (if any)
+  shell: |
+    for part in $(ls /dev/sdb? 2>/dev/null); do
+      umount -f $part || true
+    done
+  become: true
+  
+- name: Create a new partition (1st primary partition)
+  community.general.parted:
+    device: "{{ disk_device }}"
+    number: 1
+    state: present
+    part_start: 1MiB
+    part_end: 100%
+    fs_type: ext4
+  tags: solr
+
+- name: Create ext4 filesystem on the partition
+  ansible.builtin.filesystem:
+    fstype: ext4
+    dev: "{{ partition_device }}"
+  tags: solr
+
+- name: Create mount directory
+  ansible.builtin.file:
+    path: "{{ mount_point }}"
+    state: directory
+  tags: solr
+
+- name: Mount the new partition
+  ansible.builtin.mount:
+    path: "{{ mount_point }}"
+    src: "{{ partition_device }}"
+    fstype: ext4
+    state: mounted
+  tags: solr

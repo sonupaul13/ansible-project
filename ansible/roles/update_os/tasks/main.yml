@@ -1,0 +1,18 @@
+---
+- name: Update all packages using dnf 
+  ansible.builtin.raw: sudo dnf -y update
+  tags: os_update
+
+- name: Clean dnf cache
+  ansible.builtin.raw: sudo dnf clean all
+  tags: os_update
+
+- name: Reboot system
+  ansible.builtin.reboot:
+    msg: "Rebooting to complete OS update"
+    connect_timeout: 5
+    reboot_timeout: 600
+    pre_reboot_delay: 5
+    post_reboot_delay: 10
+    test_command: whoami
+  tags: os_update

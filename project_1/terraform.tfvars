@@ -8,24 +8,77 @@ services = {
     enabled = true
     instances = [
       # {
-      #   name         = "vm-sandeep-2"
-      #   machine_type = "e2-medium"
-      #   image        = "debian-cloud/debian-11"
-      #   zone         = "asia-southeast1-b"
+      #   name         = "yashwanth-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      {
+        name         = "vm-mongo1"
+        machine_type = "e2-medium"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = true
+      },
+      {
+        name         = "vm-mongo2"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = false
+      },
+      {
+        name         = "vm-solr1"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "solr"
+        run_os_upgrade = false
+      },
+      {
+        name         = "vm-postgres1"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = false
+      },
+      {
+        name         = "vm-postgres2"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = false
+      },
+      # {
+      #   name         = "geeta-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
       #   username = "ansible-user"
       # },
       # {
-      #   name         = "vm-sandeep-1"
+      #   name         = "geeta-atlantis-vm2"
       #   machine_type = "e2-small"
-      #   image        = "debian-cloud/debian-11"
+      #   image        = "rocky-linux-9-v20250611"
       #   zone         = "asia-southeast1-a"
       #   username = "ansible-user"
+      #   role = "mongo"
       # }
     ]
   }
 
   bucket = {
-    enabled = true
+    enabled = false
     buckets = [
       # {
       #   name          = "sandeep-bucket-1"
@@ -43,7 +96,7 @@ services = {
   }
 
   vpc_network = {
-    enabled = true
+    enabled = false
     networks = [
       # {
       #   name                    = "sandeep-vpc-1"
@@ -68,7 +121,7 @@ services = {
   }
 
   service_account = {
-    enabled = true
+    enabled = false
     service_accounts = [
       # {
       #   account_id        = "sandeep-service-account-1"
@@ -86,3 +139,4 @@ services = {
   }
 
 }
+##

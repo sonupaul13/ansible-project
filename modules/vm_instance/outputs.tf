@@ -4,6 +4,8 @@ output "vm_public_ips" {
     name => {
       ip = vm.network_interface[0].access_config[0].nat_ip
       username = vm.metadata["ssh-keys"] != null ? split(":", vm.metadata["ssh-keys"])[0] : null
+      role     = vm.labels["role"]
+      run_os_upgrade = vm.labels["run_os_upgrade"] ? "true" : "false"
     }
   }
 }

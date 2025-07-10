@@ -1,3 +1,11 @@
+resource "google_compute_disk" "extra_disk" {
+  for_each = {for vm in var.instances : vm.name => vm}
+  name = "${each.key}-extra-disk"
+  type = "pd-standard"
+  zone = each.value.zone
+  size = 50
+}
+
 resource "google_compute_instance" "vm_sandeep_tf" {
   for_each     = { for vm in var.instances : vm.name => vm }
 
@@ -5,13 +13,24 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["http-server", "https-server", "allow-ssh", "ssh"]
+  tags = concat(["http-server", "https-server", "allow-ssh", "ssh"], keys(each.value.tags))
+
+  labels = {
+    role = each.value.role
+    run_os_upgrade = each.value.run_os_upgrade
+  }
 
   boot_disk {
     initialize_params {
       image = each.value.image
       size  = 20
     }
+  }
+
+  attached_disk {
+    source      = google_compute_disk.extra_disk[each.key].self_link
+    device_name = "extra-disk"
+    mode        = "READ_WRITE"
   }
 
   network_interface {
@@ -36,4 +55,10 @@ resource "google_compute_firewall" "allow_ssh" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["ssh"]
+}
+
+locals {
+  instance_map = {
+    for inst in var.instances : inst.name => inst
+  }
 }
