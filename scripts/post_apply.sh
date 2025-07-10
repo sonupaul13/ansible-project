@@ -17,6 +17,8 @@ echo "" > inventory.txt
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
 
+
+
 jq -c '.[]' ../vm_ips.json | while read -r vm; do
   ip=$(echo "$vm" | jq -r '.ip')
   username=$(echo "$vm" | jq -r '.username')
@@ -43,5 +45,10 @@ done
 echo "[Atlantis] Generated inventory:"
 cat inventory.txt
 
+LOG_DIR="../ansible_logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S).log"
+
+
 echo "[Atlantis] Running Ansible playbook..."
-ansible-playbook -i inventory.txt site.yml --tags os_update
+ansible-playbook -i inventory.txt site.yml --tags mongo_setup | tee "$LOG_FILE"
