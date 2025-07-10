@@ -20,7 +20,8 @@ for TAG in "${TAGS_TO_RUN[@]}"; do
   INVENTORY_FILE="inventory_${TAG}.txt"
   echo "" > "$INVENTORY_FILE"
 
-  jq -c '.[]' ../vm_ips.json | while read -r vm; do
+  IFS=$'\n'  # Safely handle JSON lines with spaces
+  for vm in $(jq -c '.[]' ../vm_ips.json); do
     ip=$(echo "$vm" | jq -r '.ip')
     username=$(echo "$vm" | jq -r '.username')
     tags=$(echo "$vm" | jq -r '.tags | join(",")')
@@ -44,6 +45,7 @@ for TAG in "${TAGS_TO_RUN[@]}"; do
       echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY_PATH ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> "$INVENTORY_FILE"
     fi
   done
+  unset IFS
 
   echo "[Atlantis][$TAG] Final Inventory:"
   cat "$INVENTORY_FILE"
