@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vmsa-111"
+        name         = "sandeep-mongo-vm1"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -17,7 +17,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "vmsa-222"
+        name         = "sandeep-mongo-vm2"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -26,25 +26,25 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "vmsa-333"
+        name         = "sandeep-solr-vm1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
-        run_os_upgrade = false
+        run_os_upgrade = true
       },
       {
-        name         = "vmsa-444"
+        name         = "sandeep-postgres-vm1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
-        run_os_upgrade = false
+        run_os_upgrade = true
       },
       {
-        name         = "vmsa-555"
+        name         = "sandeep-postgres-vm2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
