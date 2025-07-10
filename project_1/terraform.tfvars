@@ -8,65 +8,60 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "yashwant-1"
+        name         = "vmsa-11"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "ansible-user"
-        tags = {
-          "ansible" = "true"
-          "env"     = "dev"
-          "mongo" = "true"
-        }
+        role = "mongo"
       },
       {
-        name         = "yahswant-2"
+        name         = "vmsa-22"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
-        tags = {
-          "ansible" = "true"
-          "env"     = "dev"
-          "mongo" = "true"
-        }
+        role = "mongo"
       },
       {
-        name         = "sandeep-1"
-        machine_type = "e2-small"
+        name         = "vmsa-33"
+        machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
-        tags = {
-          "ansible" = "true"
-          "env"     = "dev"
-          "solr" = "true"
-        }
+        role = "solr"
       },
       {
-        name         = "geeta-1"
-        machine_type = "e2-small"
+        name         = "vmsa-44"
+        machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
         username = "ansible-user"
-        tags = {
-          "ansible" = "true"
-          "env"     = "dev"
-          "postgres" = "true"
-        }
+        role = "postgres"
       },
       {
-        name         = "geeta-2"
-        machine_type = "e2-small"
+        name         = "vmsa-55"
+        machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
+        zone         = "asia-southeast1-b"
         username = "ansible-user"
-        tags = {
-          "ansible" = "true"
-          "env"     = "dev"
-          "postgres" = "true"
-        }
-      }
+        role = "postgres"
+      },
+      # {
+      #   name         = "geeta-atlantis-vm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      # },
+      # {
+      #   name         = "geeta-atlantis-vm2"
+      #   machine_type = "e2-small"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "mongo"
+      # }
     ]
   }
 

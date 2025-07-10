@@ -30,6 +30,6 @@ variable "instances" {
     image        = string
     zone         = string
     username = string
-    tags = map(string)
+    role = string
   }))
 }

@@ -1,4 +1,11 @@
 ---
+- name: Unmount all partitions on /dev/sdb (if any)
+  shell: |
+    for part in $(ls /dev/sdb? 2>/dev/null); do
+      umount -f $part || true
+    done
+  become: true
+  
 - name: Create a new partition (1st primary partition)
   community.general.parted:
     device: "{{ disk_device }}"

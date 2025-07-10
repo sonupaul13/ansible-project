@@ -15,6 +15,10 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   can_ip_forward = false
   tags = concat(["http-server", "https-server", "allow-ssh", "ssh"], keys(each.value.tags))
 
+  labels = {
+    role = each.value.role
+  }
+
   boot_disk {
     initialize_params {
       image = each.value.image
@@ -50,4 +54,10 @@ resource "google_compute_firewall" "allow_ssh" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["ssh"]
+}
+
+locals {
+  instance_map = {
+    for inst in var.instances : inst.name => inst
+  }
 }

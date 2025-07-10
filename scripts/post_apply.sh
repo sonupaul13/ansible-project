@@ -2,62 +2,53 @@
 set -e
 set -x
 
-SSH_KEY_PATH="/home/atlantis/.atlantis/ssh_key"
+SSH_KEY="/home/atlantis/.atlantis/ssh_key"
+TF_OUTPUT_FILE="../vm_ips.json"
 
-echo "[Atlantis] Running post-apply script..."
-
-echo "[Atlantis] Fetching VM IPs from Terraform output..."
-terraform output -json vm_public_ips > ../vm_ips.json
+echo "[Atlantis] Generating Ansible inventory..."
+terraform output -json vm_public_ips > "$TF_OUTPUT_FILE"
 
 cd ../ansible
+rm -f inventory.txt
 
-mkdir -p ~/.ssh
-touch ~/.ssh/known_hosts
+# Create role-based temp files
+touch mongo.txt solr.txt postgres.txt
 
-TAGS_TO_RUN=("mongo" "postgres" "solr" "os_update")
-
-for TAG in "${TAGS_TO_RUN[@]}"; do
-  INVENTORY_FILE="inventory_${TAG}.txt"
-  echo "" > "$INVENTORY_FILE"
-
-  IFS=$'\n'  # Safely handle JSON lines with spaces
-  for vm in $(jq -c '.[]' ../vm_ips.json); do
-    ip=$(echo "$vm" | jq -r '.ip')
-    username=$(echo "$vm" | jq -r '.username')
-    tags=$(echo "$vm" | jq -r '.tags | join(",")')
-
-    echo "[Atlantis][DEBUG] VM: $ip | Tags: $tags"
-
-    if echo "$tags" | grep -q "$TAG"; then
-      echo "[Atlantis][$TAG] Waiting for SSH to become available on $ip..."
-      for i in {1..12}; do
-        if ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=5 "$username@$ip" "echo SSH ready" >/dev/null 2>&1; then
-          echo "[Atlantis][$TAG] SSH is ready on $ip"
-          break
-        else
-          echo "[Atlantis][$TAG] SSH not ready on $ip, retrying..."
-          sleep 5
-        fi
-      done
-
-      ssh-keygen -R "$ip" || true
-
-      echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY_PATH ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> "$INVENTORY_FILE"
-    fi
+echo "[Atlantis] Waiting for SSH to come up..."
+for ip in $(jq -r '.[].ip' $TF_OUTPUT_FILE); do
+  echo "Waiting for SSH on $ip..."
+  until ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no -o ConnectTimeout=3 ansible-user@$ip 'echo SSH ready' 2>/dev/null; do
+    sleep 5
   done
-  unset IFS
+done
 
-  echo "[Atlantis][$TAG] Final Inventory:"
-  cat "$INVENTORY_FILE"
+jq -c '.[]' "$TF_OUTPUT_FILE" | while read -r vm; do
+  ip=$(echo "$vm" | jq -r '.ip')
+  username=$(echo "$vm" | jq -r '.username')
+  role=$(echo "$vm" | jq -r '.role')
 
-  if [[ -s "$INVENTORY_FILE" ]]; then
-    LOG_DIR="../ansible_logs"
-    mkdir -p "$LOG_DIR"
-    LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S)_${TAG}.log"
+  ssh-keygen -R "$ip" || true
 
-    echo "[Atlantis][$TAG] Running Ansible playbook..."
-    ansible-playbook -i "$INVENTORY_FILE" site.yml --tags "$TAG" | tee "$LOG_FILE"
-  else
-    echo "[Atlantis][$TAG] No matching hosts for tag $TAG, skipping..."
+  echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> "$role.txt"
+done
+
+# Combine into inventory.txt
+for role in mongo solr postgres; do
+  if [ -s "$role.txt" ]; then
+    echo "[$role]" >> inventory.txt
+    cat "$role.txt" >> inventory.txt
+    echo "" >> inventory.txt
   fi
 done
+
+rm -f mongo.txt solr.txt postgres.txt
+
+echo "[Atlantis] Inventory generated:"
+cat inventory.txt
+
+LOG_DIR="../ansible_logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/ansible_$(date +%Y%m%d_%H%M%S).log"
+ 
+
+ansible-playbook -i inventory.txt site.yml | tee "$LOG_FILE"
