@@ -12,7 +12,8 @@ cd ../ansible
 rm -f inventory.txt
 
 # Create role-based temp files
-touch mongo.txt solr.txt postgres.txt
+touch mongo.txt solr.txt postgres.txt inventory.txt
+echo "[os_upgrade]" > inventory.txt
 
 echo "[Atlantis] Waiting for SSH to come up..."
 for ip in $(jq -r '.[].ip' $TF_OUTPUT_FILE); do
@@ -26,11 +27,18 @@ jq -c '.[]' "$TF_OUTPUT_FILE" | while read -r vm; do
   ip=$(echo "$vm" | jq -r '.ip')
   username=$(echo "$vm" | jq -r '.username')
   role=$(echo "$vm" | jq -r '.role')
+  run_os_upgrade=$(echo "$vm" | jq -r '.run_os_upgrade')
 
   ssh-keygen -R "$ip" || true
 
   echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> "$role.txt"
+
+  if [ "$run_os_upgrade" == "true" ]; then
+    echo "$ip ansible_user=$username ansible_ssh_private_key_file=$SSH_KEY ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
+  fi
 done
+
+echo "" >> inventory.txt
 
 # Combine into inventory.txt
 for role in mongo solr postgres; do

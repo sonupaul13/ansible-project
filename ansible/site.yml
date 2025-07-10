@@ -1,6 +1,6 @@
 ---
 - name : Base OS
-  hosts: all
+  hosts: os_upgrade
   become: true
   roles:
     - { role: update_os, tags: ["os_update"]}

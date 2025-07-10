@@ -14,6 +14,7 @@ services = {
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = true
       },
       {
         name         = "vmsa-22"
@@ -22,6 +23,7 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "mongo"
+        run_os_upgrade = false
       },
       {
         name         = "vmsa-33"
@@ -30,6 +32,7 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
+        run_os_upgrade = false
       },
       {
         name         = "vmsa-44"
@@ -38,6 +41,7 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       {
         name         = "vmsa-55"
@@ -46,6 +50,7 @@ services = {
         zone         = "asia-southeast1-b"
         username = "ansible-user"
         role = "postgres"
+        run_os_upgrade = false
       },
       # {
       #   name         = "geeta-atlantis-vm1"

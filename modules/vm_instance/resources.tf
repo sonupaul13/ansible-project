@@ -17,6 +17,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
 
   labels = {
     role = each.value.role
+    run_os_upgrade = each.value.run_os_upgrade
   }
 
   boot_disk {
