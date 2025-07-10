@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 set -x
- 
+
 SSH_KEY="/home/atlantis/.atlantis/ssh_key"
 TF_OUTPUT_FILE="../vm_ips.json"
  

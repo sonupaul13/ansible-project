@@ -9,19 +9,19 @@
   hosts: mongo
   become: true
   roles:
-    - { role: setup_mongo, tags: ["mongo_setup"] }
+    - { role: setup_mongo, tags: ["mongo"] }
 
 - name: Setup LVM
   hosts: mongo
   become: true
   roles:
-    - { role: setup_lvm, tags: ["lvm_setup"] }
+    - { role: setup_lvm, tags: ["mongo"] }
 
 - name: Install Solr
   hosts: solr
   become: true
   roles:
-    - { role: install_packages, tags: install_solr }
+    - { role: install_packages, tags: solr }
 
 - name: Mount Disks
   hosts: solr
@@ -31,20 +31,17 @@
     partition_device: /dev/sdb1
     mount_point: /mnt/data
   roles:
-    - { role: add_generic_partition, tags: mount_disk }
+    - { role: add_generic_partition, tags: solr }
 
 - name: Install postgres
   hosts: postgres
   become: yes
   roles:
-    - installing_postgres
-  tags:
-    - install 
+    - {role: installing_postgres, tags: postgres}
 
 - name: Create LVM partitions for postgres
   hosts: postgres
   become: yes
   roles:
-    - LVM_partition_postgres
-  tags:
-    - partition
+    - {role: LVM_partition_postgres, tags: postgres}
+  
