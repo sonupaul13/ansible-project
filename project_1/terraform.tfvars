@@ -8,7 +8,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vm-mongo1"
+        name         = "vm-mongo11"
         machine_type = "e2-medium"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
@@ -17,7 +17,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "vm-mongo2"
+        name         = "vm-mongo21"
         machine_type = "e2-small"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -26,7 +26,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "vm-solr1"
+        name         = "vm-solr11"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -35,7 +35,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "vm-postgres1"
+        name         = "vm-postgres11"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -44,7 +44,7 @@ services = {
         run_os_upgrade = true
       },
       {
-        name         = "vm-postgres2"
+        name         = "vm-postgres21"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
