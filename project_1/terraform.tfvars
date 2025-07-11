@@ -32,7 +32,7 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "solr"
-        run_os_upgrade = false
+        run_os_upgrade = true
       },
       {
         name         = "vm-postgres1"
@@ -41,7 +41,7 @@ services = {
         zone         = "asia-southeast1-a"
         username = "ansible-user"
         role = "postgres"
-        run_os_upgrade = false
+        run_os_upgrade = true
       },
       {
         name         = "vm-postgres2"
