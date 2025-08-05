@@ -7,26 +7,26 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      # {
-      #   name         = "vmmongo1112"
-      #   machine_type = "e2-medium"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      #   role = "mongo"
-      #   run_os_upgrade = true
-      # },
-      # {
-      #   name         = "vmmongo2112"
-      #   machine_type = "e2-small"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "mongo"
-      #   run_os_upgrade = false
-      # },
       {
-        name         = "newsolrvm-1234"
+        name         = "hellomongo1"
+        machine_type = "e2-medium"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = true
+      },
+      {
+        name         = "hellomongo2"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = false
+      },
+      {
+        name         = "hellosolrvm1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -35,7 +35,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "newpostgres1112"
+        name         = "hellopostgres1"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-a"
@@ -44,7 +44,7 @@ services = {
         run_os_upgrade = false
       },
       {
-        name         = "newpostgres2112"
+        name         = "hellopostgres2"
         machine_type = "e2-standard-4"
         image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
