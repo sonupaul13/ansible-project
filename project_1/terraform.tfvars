@@ -7,51 +7,51 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      # {
-      #   name         = "vm-mongo111"
-      #   machine_type = "e2-medium"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      #   role = "mongo"
-      #   run_os_upgrade = true
-      # },
-      # {
-      #   name         = "vm-mongo211"
-      #   machine_type = "e2-small"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "mongo"
-      #   run_os_upgrade = false
-      # },
-      # {
-      #   name         = "vm-solr111"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "solr"
-      #   run_os_upgrade = true
-      # },
-      # {
-      #   name         = "vm-postgres111"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "postgres"
-      #   run_os_upgrade = true
-      # },
-      # {
-      #   name         = "vm-postgres211"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      #   role = "postgres"
-      #   run_os_upgrade = false
-      # },
+      {
+        name         = "vmmongo1112"
+        machine_type = "e2-medium"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = true
+      },
+      {
+        name         = "vmmongo2112"
+        machine_type = "e2-small"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "mongo"
+        run_os_upgrade = false
+      },
+      {
+        name         = "vmsolr1112"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "solr"
+        run_os_upgrade = true
+      },
+      {
+        name         = "vmpostgres1112"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = true
+      },
+      {
+        name         = "vmpostgres2112"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = false
+      },
       # {
       #   name         = "geeta-atlantis-vm1"
       #   machine_type = "e2-standard-4"
