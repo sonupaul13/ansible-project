@@ -25,33 +25,33 @@ services = {
       #   role = "mongo"
       #   run_os_upgrade = false
       # },
-      # {
-      #   name         = "solrvm-1"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "solr"
-      #   run_os_upgrade = false
-      # },
-      # {
-      #   name         = "postgres1112"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-a"
-      #   username = "ansible-user"
-      #   role = "postgres"
-      #   run_os_upgrade = false
-      # },
-      # {
-      #   name         = "postgres2112"
-      #   machine_type = "e2-standard-4"
-      #   image        = "rocky-linux-9-v20250611"
-      #   zone         = "asia-southeast1-b"
-      #   username = "ansible-user"
-      #   role = "postgres"
-      #   run_os_upgrade = false
-      # },
+      {
+        name         = "newsolrvm-1234"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "solr"
+        run_os_upgrade = false
+      },
+      {
+        name         = "newpostgres1112"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-a"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = false
+      },
+      {
+        name         = "newpostgres2112"
+        machine_type = "e2-standard-4"
+        image        = "rocky-linux-9-v20250611"
+        zone         = "asia-southeast1-b"
+        username = "ansible-user"
+        role = "postgres"
+        run_os_upgrade = false
+      },
       # {
       #   name         = "geeta-atlantis-vm1"
       #   machine_type = "e2-standard-4"
