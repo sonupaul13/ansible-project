@@ -28,7 +28,7 @@
   become: true
   vars:
     disk_device: /dev/sdb
-    partition_device: /dev/sdb2
+    partition_device: /dev/sdb1
     mount_point: /mnt/data
   roles:
     - { role: add_generic_partition, tags: solr }
