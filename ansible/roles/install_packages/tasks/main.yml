@@ -47,12 +47,6 @@
     creates: /opt/solr/bin/solr
   tags: solr
 
-# - name: Symlink /opt/solr to extracted dir
-#   ansible.builtin.file:
-#     src: /opt/solr-8.11.2
-#     dest: /opt/solr
-#     state: link
-
 - name: Copy solr service file
   ansible.builtin.copy:
     src: solr.service
