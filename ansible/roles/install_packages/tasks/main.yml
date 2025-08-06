@@ -22,7 +22,7 @@
   
 - name: Download Solr
   ansible.builtin.get_url:
-    url: https://archive.apache.org/dist/lucene/solr/8.11.2/solr-8.11.2.tgz
+    url: https://default.apache.org/dist/lucene/solr/8.11.2/solr-8.11.2.tgz
     dest: /tmp/solr-8.11.2.tgz
     mode: '0644'
     timeout: 180
@@ -46,12 +46,6 @@
     group: solr
     creates: /opt/solr/bin/solr
   tags: solr
-
-# - name: Symlink /opt/solr to extracted dir
-#   ansible.builtin.file:
-#     src: /opt/solr-8.11.2
-#     dest: /opt/solr
-#     state: link
 
 - name: Copy solr service file
   ansible.builtin.copy:
