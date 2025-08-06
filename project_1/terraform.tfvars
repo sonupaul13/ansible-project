@@ -25,15 +25,15 @@ services = {
       #   role = "mongo"
       #   run_os_upgrade = false
       # },
-      {
-        name         = "genericsolrvm1"
-        machine_type = "e2-standard-4"
-        image        = "rocky-linux-9-v20250611"
-        zone         = "asia-southeast1-a"
-        username = "ansible-user"
-        role = "solr"
-        run_os_upgrade = false
-      },
+      # {
+      #   name         = "genericsolrvm1"
+      #   machine_type = "e2-standard-4"
+      #   image        = "rocky-linux-9-v20250611"
+      #   zone         = "asia-southeast1-a"
+      #   username = "ansible-user"
+      #   role = "solr"
+      #   run_os_upgrade = false
+      # },
       # {
       #   name         = "hellopostgres1"
       #   machine_type = "e2-standard-4"
